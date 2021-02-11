@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mqtt
+  name: mqtt
+  namespace: communication
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mqtt
+  template:
+    metadata:
+      labels:
+        app: mqtt
+    spec:
+      containers:
+      - image: eclipse-mosquitto:2.0
+# uncomment for inital deployment only.
+#          command: [ "/bin/sleep" ]
+#          args: [ "1h" ]
+        name: mqtt-deployment
+        ports:
+        - containerPort: 1883
+          name: data
+        - containerPort: 9001
+          name: logs
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "0.1"
+        volumeMounts:
+          # A configmap for the mosquitto.conf file
+          - name: network-communication-mqtt-pvc
+            mountPath: /mosquitto/conf/mosquitto.conf
+            subPath: communication/mosquittoMQTT/mosquitto.conf
+          # A configmap for the mosquitto passwd file
+          - name: network-communication-mqtt-pvc
+            mountPath: /mosquitto/conf/passwd
+            subPath: communication/mosquittoMQTT/passwd
+      volumes:
+        - name: network-communication-mqtt-pvc
+          persistentVolumeClaim:
+            claimName: network-communication-mqtt-pvc
