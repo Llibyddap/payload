@@ -12,3 +12,6 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   hostPath:
     path: "/monitoring/grafana/"
+  claimRef:
+    namespace: monitoring
+    name: grafana-storage
