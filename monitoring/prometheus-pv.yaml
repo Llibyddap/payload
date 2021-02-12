@@ -12,3 +12,6 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   hostPath:
     path: "/monitoring/prometheus/"
+  claimRef:
+    namespace: monitoring
+    name: prometheus-storage
