@@ -11,4 +11,4 @@ spec:
     server: 192.168.2.83
   persistentVolumeReclaimPolicy: Retain
   hostPath:
-    path: "/monitoring/grafana"
+    path: "/monitoring/grafana/"
