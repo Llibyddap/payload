@@ -11,5 +11,5 @@ spec:
     server: 192.168.2.83
   persistentVolumeReclaimPolicy: Retain
   claimRef:
-    namespace: communication
+    namespace: monitoring
     name: grafana-storage
