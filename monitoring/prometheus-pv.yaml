@@ -10,6 +10,8 @@ spec:
     path: /mnt/Gaia/k3s/
     server: 192.168.2.83
   persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: "/monitoring/prometheus"
   claimRef:
     namespace: monitoring
     name: prometheus-storage
