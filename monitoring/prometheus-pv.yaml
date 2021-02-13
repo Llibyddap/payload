@@ -7,9 +7,9 @@ spec:
     storage: 2Gi
   accessModes: [ 'ReadWriteOnce' ]
   nfs:
-    path: /mnt/Gaia/k3s/
+    path: /mnt/Gaia/k3s/monitoring/
     server: 192.168.2.83
   persistentVolumeReclaimPolicy: Retain
   claimRef:
     namespace: monitoring
-    name: prometheus-storage
+    name: prometheus-k8s-db-prometheus-k8s-0
