@@ -7,7 +7,7 @@ spec:
     storage: 20Gi
   accessModes: [ 'ReadWriteOnce' ]
   nfs:
-    path: /mnt/Gaia/k3s/
+    path: /mnt/Gaia/k3s/monitoring
     server: 192.168.2.83
   persistentVolumeReclaimPolicy: Retain
   claimRef:
