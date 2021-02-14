@@ -4,19 +4,11 @@ metadata:
   labels:
     app: gitea
   name: gitea
-<<<<<<< HEAD
-  namespace: default
-=======
   namespace: repositories
->>>>>>> dc625972abdd33b50ae349f17f8eddd3542b8ec0
 spec:
   ports:
   - name: http
     port: 3000
     targetPort: http
   selector:
-<<<<<<< HEAD
     app: gitea
-=======
-    app: gitea
->>>>>>> dc625972abdd33b50ae349f17f8eddd3542b8ec0
