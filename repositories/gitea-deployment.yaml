@@ -33,10 +33,10 @@ spec:
       volumes:
       - name: root
         persistentVolumeClaim:
-          claimName: gitea-root-pvc
+          claimName: gitea-pvc-root
       - name: data
         persistentVolumeClaim:
-          claimName: gitea-data-pvc
+          claimName: gitea-pvc-data
   selector:
     matchLabels:
       app: gitea
