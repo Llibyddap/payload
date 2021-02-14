@@ -23,7 +23,7 @@ spec:
         ports:
         - name: com
           containerPort: 1883
-          protocal: TCP
+          protocol: TCP
       restartPolicy: Always
       volumes:
         - name: mosquitto-config
