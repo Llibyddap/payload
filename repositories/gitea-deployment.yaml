@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: gitea
+  name: gitea
+  namespace: repositories
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: gitea
+      labels:
+        app:  gitea
+    spec:
+      containers:
+      - name: gitea
+        image: gitea/gitea:latest
+        imagePullPolicy: Always
+        volumeMounts:
+        - name: root
+          mountPath: "var/lib/gitea"
+        - name: data
+          mountPath: "gitea/data"
+        ports:
+        - name: ssh
+          containerPort: 22
+          protocol: TCP
+        - name: http
+          containerPort: 3000
+          protocol: TCP
+      restartPolicy: Always
+      volumes:
+      - name: root
+        persistentVolumeClaim:
+          claimName: gitea-root-pvc
+      - name: data
+        persistentVolumeClaim:
+          claimName: gitea-data-pvc
+  selector:
+    matchLabels:
+      app: gitea

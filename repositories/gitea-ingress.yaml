@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: gitea
+  namespace: repositories
+spec:
+  rules:
+  - host: gitea.192.168.2.140.nip.io
+    http:
+      paths:
+      - backend:
+          serviceName: gitea
+          servicePort: http
+        path: /
+  tls:
+  - hosts:
+    - gitea.192.168.2.140.nip.io
