@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mqtt
+  name: mqtt
+  namespace: communication
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: mqtt
+      labels:
+        app: mqtt
+    spec:
+      containers:
+      - name: mqtt
+        image: eclipse-mosquitto:2.0
+        imagePullPolicy: Always
+        volumeMounts:
+            - name: mosquitto-config
+              mountPath: "/mosquitto/config/"
+        ports:
+        - name: com
+          containerPort: 1883
+          protocal: TCP
+      restartPolicy: Always
+      volumes:
+        - name: mosquitto-config
+          persistentVolumeClaim:
+            claimName: mqtt-pvc
+  selector:
+    matchLabels:
+      app: mqtt
