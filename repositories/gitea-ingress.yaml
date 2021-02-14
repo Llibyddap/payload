@@ -2,7 +2,11 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: gitea
+<<<<<<< HEAD
+  namespace: default
+=======
   namespace: repositories
+>>>>>>> dc625972abdd33b50ae349f17f8eddd3542b8ec0
 spec:
   rules:
   - host: gitea.192.168.2.140.nip.io
@@ -14,4 +18,8 @@ spec:
         path: /
   tls:
   - hosts:
+<<<<<<< HEAD
     - gitea.192.168.2.140.nip.io
+=======
+    - gitea.192.168.2.140.nip.io
+>>>>>>> dc625972abdd33b50ae349f17f8eddd3542b8ec0
