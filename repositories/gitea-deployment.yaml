@@ -21,7 +21,7 @@ spec:
         - name: root
           mountPath: "var/lib/gitea"
         - name: data
-          mountPath: "gitea/data"
+          mountPath: "/data"
         ports:
         - name: ssh
           containerPort: 22
