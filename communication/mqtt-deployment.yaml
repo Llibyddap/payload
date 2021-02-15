@@ -17,18 +17,20 @@ spec:
       - name: mqtt
         image: eclipse-mosquitto:2.0
         imagePullPolicy: Always
-        volumeMounts:
-            - name: mosquitto-config
-              mountPath: "/mosquitto/config/"
+#        volumeMounts:
+#            - name: mosquitto-config
+#              mountPath: "/mosquitto/"
         ports:
-        - name: com
+        - name: data
           containerPort: 1883
           protocol: TCP
+#          name: com-2
+#          containerPort: 8883
       restartPolicy: Always
-      volumes:
-        - name: mosquitto-config
-          persistentVolumeClaim:
-            claimName: mqtt-pvc
+#      volumes:
+#        - name: mosquitto-config
+#          persistentVolumeClaim:
+#            claimName: mqtt-pvc
   selector:
     matchLabels:
       app: mqtt

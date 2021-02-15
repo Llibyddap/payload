@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: mqtt
+  namespace: communication
+spec:
+  rules:
+  - host: mqtt.192.168.2.140.nip.io
+    http:
+      paths:
+      - backend:
+          serviceName: mqtt
+          servicePort: data
+        path: /
+  tls:
+  - hosts:
+    - mqtt.192.168.2.140.nip.io
+  
