@@ -17,7 +17,6 @@ spec:
       - name: gitea
         image: gitea/gitea:latest
         imagePullPolicy: IfNotPresent
-        restartPolicy: Always
 
         ports:
         - containerPort: 22
