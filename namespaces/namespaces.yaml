@@ -6,17 +6,17 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: openhab
+  name: home
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: drupal
+  name: web
 
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: repositories
+  name: repository
 
 # monitoring namesapce is added by cluster-monitoring playbook
