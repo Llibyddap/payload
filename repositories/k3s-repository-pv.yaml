@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: k3s-repository-pv
+  namespace: repository
+spec:
+  capacity:
+    storage: 1Ti
+  accessModes: [ 'ReadWriteOnce', 'ReadWriteMany' ]
+  nfs:
+    path: /mnt/Gaia/k3s/repository
+#    path: /mnt/Gaia/k3s/repositories/gitea-data
+    server: 192.168.2.83
+    readOnly: false
+  persistentVolumeReclaimPolicy: Retain
+  volumeMode: Filesystem

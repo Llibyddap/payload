@@ -4,7 +4,7 @@ metadata:
   labels:
     app: gitea
   name: gitea
-  namespace: repositories
+  namespace: repository
 spec:
   replicas: 1
   template:
@@ -16,27 +16,23 @@ spec:
       containers:
       - name: gitea
         image: gitea/gitea:latest
-        imagePullPolicy: Always
-        volumeMounts:
-        - name: root
-          mountPath: "var/lib/gitea"
-        - name: data
-          mountPath: "/data"
+        imagePullPolicy: IfNotPresent
+        restartPolicy: Always
+
         ports:
-        - name: ssh
-          containerPort: 22
-          protocol: TCP
-        - name: http
-          containerPort: 3000
-          protocol: TCP
-      restartPolicy: Always
+        - containerPort: 22
+        - containerPort: 3000
+
+        volumeMounts:
+        - mountPath: /data
+          name: gitea-storage
+          subPath: gitea/data
+
       volumes:
-      - name: root
+      - name: gitea-storage
         persistentVolumeClaim:
-          claimName: gitea-root-pvc
-      - name: data
-        persistentVolumeClaim:
-          claimName: gitea-data-pvc
+          claimName: k3s-repository-pvc
+
   selector:
     matchLabels:
       app: gitea
