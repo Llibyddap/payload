@@ -2,21 +2,23 @@ apiVersion: v1
 kind: Namespace
 metadata:
   name: communication
+  
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
   name: home
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: web
 
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
   name: repository
+  
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: website
 
 # monitoring namesapce is added by cluster-monitoring playbook
