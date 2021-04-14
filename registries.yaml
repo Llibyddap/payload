@@ -1,0 +1,12 @@
+#  endpoint needs to be specified here and in the deployment yaml
+#  under the image label.  In addition, the registry credientials
+#  must be provided (not sure why) - they are in the regcred.yaml.
+
+mirrors:
+  docker.io:
+    endpoint:
+    - "http://192.168.2.53:5000"
+configs:
+  "192.168.2.53:5000":
+    tls:
+      insecure_skip_verify: true
