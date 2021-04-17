@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: registry
+  name: registry
+  namespace: repository
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: registry
+      labels:
+        app: registry
+    spec:
+      containers:
+      - name: registry
+        image: registry:2
+
+        ports:
+        - containerPort: 5000
+
+        volumeMounts:
+        - mountPath: /var/lib/registry
+          name: registry-storage
+          subPath: registry/data
+
+      volumes:
+      - name: registry-storage
+        persistentVolumeClaim:
+          claimName: k3s-repository-pvc
+
+      nodeSelector:
+        node-role.kubernetes.io/master: "true"
+
+  selector:
+    matchLabels: 
+      app: registry

@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  labels:
+    app: registry
+  name: registry
+  namespace: repository
+spec:
+  rules:
+  - host: registry.192.168.2.143.nip.io
+    http:
+      paths:
+      - backend:
+          serviceName: registry
+          servicePort: 5000
+  tls:
+  - hosts:
+    - registry.192.168.2.143.nip.io
