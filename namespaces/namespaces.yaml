@@ -27,4 +27,10 @@ kind: Namespace
 metadata:
   name: keel
 
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ethan
+
 # monitoring namesapce is added by cluster-monitoring playbook
