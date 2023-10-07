@@ -10,7 +10,7 @@ spec:
   nfs:
     path: /mnt/Gaia/k3s/repository
 #    path: /mnt/Gaia/k3s/repositories/gitea-data
-    server: 192.168.2.83
+    server: 192.168.0.115
     readOnly: false
   persistentVolumeReclaimPolicy: Retain
   volumeMode: Filesystem
