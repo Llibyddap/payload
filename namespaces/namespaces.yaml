@@ -33,4 +33,10 @@ kind: Namespace
 metadata:
   name: ethan
 
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: portainer
+
 # monitoring namesapce is added by cluster-monitoring playbook
